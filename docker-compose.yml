@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  claude-code-statusline:
+    working_dir: /root/projects
+    entrypoint: ["npx", "-y", "@anthropic-ai/claude-code"]
+
+    volumes:
+      
+      - ./projects:/root/projects
+      - ./.claude/plugins:/root/.claude/plugins
+      - ./.claude/projects:/root/.claude/projects
+      - ./.claude/shell-snapshots:/root/.claude/shell-snapshots
+      - ./.claude/statsig:/root/.claude/statsig
+      - ./.claude/todos:/root/.claude/todos
+      - ./.claude/settings.json:/root/.claude/settings.json
+      - ./.claude/statusline.sh:/root/.claude/statusline.sh
+
+    image: claude-code-statusline-docker:latest
+    network_mode: host
+    stdin_open: true
+    tty: true
+    environment:
+      - ANTHROPIC_API_KEY=99c24854e9ff40658d60beb74453ba84.MCLQFIB3pqgNtgUU
+      - ANTHROPIC_AUTH_TOKEN=99c24854e9ff40658d60beb74453ba84.MCLQFIB3pqgNtgUU
