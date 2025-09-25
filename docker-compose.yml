@@ -6,7 +6,6 @@ services:
     entrypoint: ["npx", "-y", "@anthropic-ai/claude-code"]
 
     volumes:
-      
       - ./projects:/root/projects
       - ./.claude/plugins:/root/.claude/plugins
       - ./.claude/projects:/root/.claude/projects
@@ -21,5 +20,5 @@ services:
     stdin_open: true
     tty: true
     environment:
-      - ANTHROPIC_API_KEY=99c24854e9ff40658d60beb74453ba84.MCLQFIB3pqgNtgUU
-      - ANTHROPIC_AUTH_TOKEN=99c24854e9ff40658d60beb74453ba84.MCLQFIB3pqgNtgUU
+      - ANTHROPIC_API_KEY=${API_KEY_AND_AUTH_TOKEN}
+      - ANTHROPIC_AUTH_TOKEN=${API_KEY_AND_AUTH_TOKEN}

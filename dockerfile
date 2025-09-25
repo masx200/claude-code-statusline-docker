@@ -100,7 +100,7 @@ ENTRYPOINT [ "npx" ,"-y", "@anthropic-ai/claude-code" ]
 
 
 env ANTHROPIC_BASE_URL="https://open.bigmodel.cn/api/anthropic"
-# env ANTHROPIC_API_KEY="99c24854e9ff40658d60beb74453ba84.MCLQFIB3pqgNtgUU"
-# env ANTHROPIC_AUTH_TOKEN="99c24854e9ff40658d60beb74453ba84.MCLQFIB3pqgNtgUU"
+# env ANTHROPIC_API_KEY="${API_KEY_AND_AUTH_TOKEN}"
+# env ANTHROPIC_AUTH_TOKEN="${API_KEY_AND_AUTH_TOKEN}"
 
 env ANTHROPIC_MODEL="glm-4.5"
