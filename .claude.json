@@ -1,5 +1,5 @@
 {
-  "numStartups": 2,
+  "numStartups": 4,
   "installMethod": "unknown",
   "autoUpdates": true,
   "theme": "dark-ansi",
@@ -19,7 +19,15 @@
     "theme-command": 2,
     "prompt-queue": 2,
     "enter-to-steer-in-relatime": 2,
-    "todo-list": 2
+    "todo-list": 2,
+    "shift-enter": 3,
+    "# for memory": 3,
+    "install-github-app": 3,
+    "drag-and-drop-images": 3,
+    "double-esc": 3,
+    "continue": 3,
+    "shift-tab": 3,
+    "image-paste": 3
   },
   "autoConnectIde": true,
   "cachedStatsigGates": {
@@ -76,6 +84,88 @@
       "lastTotalCacheCreationInputTokens": 0,
       "lastTotalCacheReadInputTokens": 277,
       "lastSessionId": "fac2149f-985e-4359-b152-d345d3db7c18"
+    },
+    "/root/projects/golang-proxy-dashboard-all-in-one": {
+      "allowedTools": [],
+      "history": [
+        {
+          "display": "/exit ",
+          "pastedContents": {}
+        },
+        {
+          "display": "/status ",
+          "pastedContents": {}
+        },
+        {
+          "display": "/model glm-4.5",
+          "pastedContents": {}
+        },
+        {
+          "display": "/model ",
+          "pastedContents": {}
+        },
+        {
+          "display": "/config ",
+          "pastedContents": {}
+        },
+        {
+          "display": "/status ",
+          "pastedContents": {}
+        }
+      ],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "lastCost": 0,
+      "lastAPIDuration": 0,
+      "lastToolDuration": 0,
+      "lastDuration": 68752,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 0,
+      "lastTotalOutputTokens": 0,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalWebSearchRequests": 0,
+      "lastSessionId": "733c4581-5951-4188-8407-dcc4bca9daf3"
+    },
+    "/root": {
+      "allowedTools": [],
+      "history": [
+        {
+          "display": "/exit ",
+          "pastedContents": {}
+        },
+        {
+          "display": "/status ",
+          "pastedContents": {}
+        }
+      ],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "lastCost": 0,
+      "lastAPIDuration": 0,
+      "lastToolDuration": 0,
+      "lastDuration": 16256,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 0,
+      "lastTotalOutputTokens": 0,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalWebSearchRequests": 0,
+      "lastSessionId": "fff4c98b-0048-4251-b69b-9b0563a234a9"
     }
   },
   "userID": "0ec4fcc8e3b6bac310e0aea8346c4d9001af42fa83700cff46d00fefb9a6d97c",
@@ -84,5 +174,8 @@
   "hasOpusPlanDefault": false,
   "subscriptionNoticeCount": 0,
   "hasAvailableSubscription": false,
-  "isQualifiedForDataSharing": false
+  "isQualifiedForDataSharing": false,
+  "hasIdeOnboardingBeenShown": {
+    "vscode": true
+  }
 }
