@@ -26,7 +26,7 @@
 
 ### 容器配置
 
-- **基础镜像**: Ubuntu Noble 配置中文镜像源 (BFSU)
+- **基础镜像**: debian trixie 配置中文镜像源 (BFSU)
 - **Node.js**: 22.x 版本，使用中文 npm 镜像源
 - **包管理器**: 使用 `cnpm` 在中国境内加速包安装
 - **Claude Code**: 通过 npm 全局安装，带有自定义配置
@@ -60,7 +60,7 @@ Docker 容器挂载多个目录以实现持久化：
 
 ## 关键文件
 
-- `dockerfile` - 容器构建配置，基于 Ubuntu 和中文镜像源
+- `dockerfile` - 容器构建配置，基于 debian 和中文镜像源
 - `docker-compose.yml` - 服务定义，包含卷挂载和环境变量
 - `statusline.sh` - 自定义状态栏实现，带有彩色输出和日志记录
 - `settings.json` - Claude Code 配置，指向自定义状态栏脚本

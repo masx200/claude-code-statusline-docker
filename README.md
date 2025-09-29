@@ -12,7 +12,7 @@ Docker 容器化的 Claude Code
 
 ### 🐳 容器化开发环境
 
-- 基于 Ubuntu Noble 镜像，预配置中文软件包镜像源
+- 基于 debian trixie 镜像，预配置中文软件包镜像源
 - 集成 Claude Code CLI 工具和依赖
 - 一键构建和启动，开箱即用
 

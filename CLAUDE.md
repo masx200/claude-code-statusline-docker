@@ -28,7 +28,7 @@ statusline script for enhanced visual feedback.
 
 ### Container Configuration
 
-- **Base Image**: Ubuntu Noble with Chinese package mirrors (BFSU)
+- **Base Image**: debian trixie with Chinese package mirrors (BFSU)
 - **Node.js**: Version 22.x with Chinese npm registry
 - **Package Manager**: Uses `cnpm` for faster package installation in China
 - **Claude Code**: Installed globally via npm with custom configuration
@@ -66,7 +66,7 @@ The Docker container mounts several directories for persistence:
 
 ## Key Files
 
-- `dockerfile` - Container build configuration with Ubuntu base and Chinese
+- `dockerfile` - Container build configuration with debian base and Chinese
   mirrors
 - `docker-compose.yml` - Service definition with volume mounts and environment
   variables
