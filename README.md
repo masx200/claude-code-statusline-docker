@@ -4,28 +4,34 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![Node.js](https://img.shields.io/badge/Node.js-22.x-green.svg)](https://nodejs.org/)
 
-Docker 容器化的 Claude Code 开发环境，配备自定义状态栏显示，专为中文开发者优化。提供便携式、高性能的 AI 编程助手体验。
+Docker 容器化的 Claude Code
+开发环境，配备自定义状态栏显示，专为中文开发者优化。提供便携式、高性能的 AI
+编程助手体验。
 
 ## ✨ 核心特性
 
 ### 🐳 容器化开发环境
+
 - 基于 Ubuntu Noble 镜像，预配置中文软件包镜像源
 - 集成 Claude Code CLI 工具和依赖
 - 一键构建和启动，开箱即用
 
 ### 🎨 智能状态栏
+
 - 实时显示当前目录、Git 状态、模型信息
 - 上下文使用情况监控和可视化进度条
 - 会话数据、Token 计数、成本消耗追踪
 - 现代化彩色主题，提供直观的视觉反馈
 
 ### 🌏 中文优化
+
 - BFSU (北京外国语大学) 软件包镜像源
 - 中文 npm 镜像源 (`registry.npmmirror.com`)
 - `cnpm` 包管理器加速安装
 - 完整的中文文档和注释
 
 ### 💾 数据持久化
+
 - 项目代码、配置、插件、会话记录全部持久化
 - 通过 Docker 卷挂载实现数据安全存储
 - 支持跨会话的状态保持
@@ -41,14 +47,16 @@ Docker 容器化的 Claude Code 开发环境，配备自定义状态栏显示，
 ### 环境配置
 
 1. **克隆项目**
+
    ```bash
    git clone <repository-url>
-   cd claude-code-statusline-docker
+   cd claude-code-statusline-sshd
    ```
 
 2. **配置环境变量**
 
    编辑 `docker-compose.yml` 文件，设置 API 密钥：
+
    ```yaml
    environment:
      - ANTHROPIC_API_KEY=${API_KEY_AND_AUTH_TOKEN}
@@ -56,15 +64,17 @@ Docker 容器化的 Claude Code 开发环境，配备自定义状态栏显示，
    ```
 
    或者创建 `.env` 文件：
+
    ```bash
    echo "API_KEY_AND_AUTH_TOKEN=your_api_key_here" > .env
    ```
 
 3. **构建镜像**
+
    ```bash
    ./build.sh
    # 或手动构建
-   docker build -t claude-code-statusline-docker .
+   docker build -t claude-code-statusline-sshd .
    ```
 
 4. **启动容器**
@@ -83,7 +93,7 @@ Docker 容器化的 Claude Code 开发环境，配备自定义状态栏显示，
 ## 📁 项目结构
 
 ```
-claude-code-statusline-docker/
+claude-code-statusline-sshd/
 ├── 📄 README.md              # 项目文档
 ├── 📄 CLAUDE.md              # Claude Code 使用指南
 ├── 📄 AGENTS.md              # AI Agent 使用指南
@@ -108,6 +118,7 @@ claude-code-statusline-docker/
 状态栏提供三行详细信息：
 
 **第一行 - 核心信息**
+
 - 📁 当前工作目录
 - 🌿 Git 分支状态
 - 🤖 当前使用的模型
@@ -116,11 +127,13 @@ claude-code-statusline-docker/
 - 🎨 输出样式模式
 
 **第二行 - 上下文与会话**
+
 - 🧠 上下文使用情况和剩余百分比
 - ⌛ 会话时间和重置倒计时
 - 📊 可视化进度条显示
 
 **第三行 - 成本与使用统计**
+
 - 💰 累计成本和消耗速率 ($/小时)
 - 📊 Token 使用总数和每分钟速率
 - 🔥 实时 burn rate 监控
@@ -130,9 +143,9 @@ claude-code-statusline-docker/
 - **目录**: 天蓝色 (`#75B5FF`)
 - **Git**: 柔和绿色 (`#96E6B3`)
 - **模型**: 淡紫色 (`#AFAFFF`)
-- **上下文**: 根据剩余量变色 (红色→橙色→绿色)
+- **上下文**: 根据剩余量变色 (红色 → 橙色 → 绿色)
 - **成本**: 淡金色 (`#FFDEAD`)
-- **会话**: 根据剩余时间变色 (粉色→黄色→绿色)
+- **会话**: 根据剩余时间变色 (粉色 → 黄色 → 绿色)
 
 ## 🔧 高级配置
 
@@ -151,14 +164,14 @@ claude-code-statusline-docker/
 
 ```yaml
 environment:
-  - LANG=zh_CN.UTF-8                    # 语言设置
-  - DEBIAN_FRONTEND=noninteractive      # Debian 前端设置
-  - EDITOR=nano                         # 默认编辑器
-  - TZ=Asia/Shanghai                    # 时区设置
-  - ANTHROPIC_API_KEY=${API_KEY}        # API 密钥
-  - ANTHROPIC_AUTH_TOKEN=${API_KEY}     # 认证令牌
-  - ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic  # API 端点
-  - ANTHROPIC_MODEL=glm-4.5             # 模型选择
+  - LANG=zh_CN.UTF-8 # 语言设置
+  - DEBIAN_FRONTEND=noninteractive # Debian 前端设置
+  - EDITOR=nano # 默认编辑器
+  - TZ=Asia/Shanghai # 时区设置
+  - ANTHROPIC_API_KEY=${API_KEY} # API 密钥
+  - ANTHROPIC_AUTH_TOKEN=${API_KEY} # 认证令牌
+  - ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic # API 端点
+  - ANTHROPIC_MODEL=glm-4.5 # 模型选择
 ```
 
 ### 网络配置
@@ -182,11 +195,13 @@ networks:
 ### 常见问题
 
 1. **容器启动失败**
+
    - 检查 Docker 服务是否运行
    - 确认端口 33333 未被占用
    - 验证 API 密钥配置正确
 
 2. **状态栏不显示**
+
    - 确认 `statusline.sh` 脚本具有执行权限
    - 检查 `settings.json` 配置路径正确
    - 查看 `.claude/statusline.log` 日志文件
@@ -199,11 +214,13 @@ networks:
 ### 日志调试
 
 查看状态栏日志：
+
 ```bash
 tail -f .claude/statusline.log
 ```
 
 查看容器日志：
+
 ```bash
 docker logs claude-code-statusline
 ```

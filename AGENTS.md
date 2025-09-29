@@ -4,29 +4,37 @@
 
 ## 项目概述
 
-这是一个带有自定义状态栏实现的 Claude Code Docker 容器设置。该项目创建了一个便携式开发环境，包含 Claude Code CLI 工具，配置了中文软件包镜像和自定义状态栏脚本，以提供增强的视觉反馈。
+这是一个带有自定义状态栏实现的 Claude Code Docker
+容器设置。该项目创建了一个便携式开发环境，包含 Claude Code CLI
+工具，配置了中文软件包镜像和自定义状态栏脚本，以提供增强的视觉反馈。
 
 ## 开发命令
 
 ### 构建和运行
-- `./build.sh` - 构建 Docker 镜像 (`claude-code-statusline-docker:latest`)
+
+- `./build.sh` - 构建 Docker 镜像 (`claude-code-statusline-sshd:latest`)
 - `./start.sh` - 在 Docker 容器中启动 Claude Code
 - `docker compose run --rm claude-code-statusline` - 备用启动方法
 
 ### Docker 命令
-- `docker build -t claude-code-statusline-docker .` - 手动构建
-- `docker compose -f docker-compose.yml run --rm claude-code-statusline` - 使用 compose 运行
+
+- `docker build -t claude-code-statusline-sshd .` - 手动构建
+- `docker compose -f docker-compose.yml run --rm claude-code-statusline` - 使用
+  compose 运行
 
 ## 架构
 
 ### 容器配置
+
 - **基础镜像**: Ubuntu Noble 配置中文镜像源 (BFSU)
 - **Node.js**: 22.x 版本，使用中文 npm 镜像源
 - **包管理器**: 使用 `cnpm` 在中国境内加速包安装
 - **Claude Code**: 通过 npm 全局安装，带有自定义配置
 
 ### 卷挂载
+
 Docker 容器挂载多个目录以实现持久化：
+
 - `./projects:/root/projects` - 您的代码项目目录
 - `./.claude/plugins:/root/.claude/plugins` - Claude Code 插件
 - `./.claude/projects:/root/.claude/projects` - Claude Code 项目元数据
@@ -37,12 +45,15 @@ Docker 容器挂载多个目录以实现持久化：
 - `./.claude/statusline.sh:/root/.claude/statusline.sh` - 自定义状态栏脚本
 
 ### 状态栏系统
+
 - **脚本**: `statusline.sh` - 自定义 bash 脚本，用于增强 Claude Code 状态显示
-- **功能**: 目录信息、git 状态、模型信息、上下文使用情况、会话数据、令牌计数、消耗速率
+- **功能**: 目录信息、git
+  状态、模型信息、上下文使用情况、会话数据、令牌计数、消耗速率
 - **主题**: 现代化设计，使用自定义颜色
 - **日志记录**: 状态事件记录到 `.claude/statusline.log`
 
 ### 环境配置
+
 - **API 端点**: 使用 `https://open.bigmodel.cn/api/anthropic` 作为基础 URL
 - **模型**: 配置为 `glm-4.5` 模型
 - **身份验证**: API 密钥通过环境变量传递 (参见 docker-compose.yml)
@@ -66,6 +77,7 @@ Docker 容器挂载多个目录以实现持久化：
 ## 中文开发环境
 
 容器针对中文开发者进行了优化：
+
 - BFSU (北京外国语大学) 软件包镜像源
 - 中文 npm 镜像源 (`registry.npmmirror.com`)
 - `cnpm` 包管理器以实现更快的安装

@@ -1,1 +1,1 @@
-docker build -t claude-code-statusline-docker .
+docker build -t claude-code-statusline-sshd .

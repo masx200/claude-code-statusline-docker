@@ -34,7 +34,7 @@ services:
       - ./settings.json:/root/.claude/settings.json
       - ./statusline.sh:/root/.claude/statusline.sh
 
-    image: claude-code-statusline-docker:latest
+    image: claude-code-statusline-sshd:latest
 
     stdin_open: true
     tty: true
