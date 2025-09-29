@@ -59,14 +59,15 @@ Docker 容器化的 Claude Code
 
    ```yaml
    environment:
-     - ANTHROPIC_API_KEY=${API_KEY_AND_AUTH_TOKEN}
-     - ANTHROPIC_AUTH_TOKEN=${API_KEY_AND_AUTH_TOKEN}
+     - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+     - ANTHROPIC_AUTH_TOKEN=${ANTHROPIC_AUTH_TOKEN}
    ```
 
    或者创建 `.env` 文件：
 
    ```bash
-   echo "API_KEY_AND_AUTH_TOKEN=your_api_key_here" > .env
+   echo "ANTHROPIC_API_KEY=your_api_key_here" > .env
+   echo "ANTHROPIC_AUTH_TOKEN=your_auth_token_here" >> .env
    ```
 
 3. **构建镜像**
@@ -81,7 +82,7 @@ Docker 容器化的 Claude Code
    ```bash
    ./start.sh
    # 或使用 Docker Compose
-   docker compose run --rm claude-code-statusline
+    docker compose  up -d
    ```
 
 ### 首次使用
@@ -222,7 +223,7 @@ tail -f .claude/statusline.log
 查看容器日志：
 
 ```bash
-docker logs claude-code-statusline
+docker logs claude-code-statusline-sshd
 ```
 
 ## 🤝 贡献指南

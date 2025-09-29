@@ -14,12 +14,12 @@
 
 - `./build.sh` - 构建 Docker 镜像 (`claude-code-statusline-sshd:latest`)
 - `./start.sh` - 在 Docker 容器中启动 Claude Code
-- `docker compose run --rm claude-code-statusline` - 备用启动方法
+- ` docker compose  up -d` - 备用启动方法
 
 ### Docker 命令
 
 - `docker build -t claude-code-statusline-sshd .` - 手动构建
-- `docker compose -f docker-compose.yml run --rm claude-code-statusline` - 使用
+- `docker compose -f docker-compose.yml run --rm claude-code-statusline-sshd` - 使用
   compose 运行
 
 ## 架构

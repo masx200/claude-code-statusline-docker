@@ -1,1 +1,1 @@
-docker compose -f docker-compose.yml run --rm claude-code-statusline
+docker compose -f docker-compose.yml up -d

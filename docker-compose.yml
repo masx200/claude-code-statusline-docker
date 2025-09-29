@@ -1,7 +1,7 @@
 version: "3.8"
-name: claude-code-statusline
+name: claude-code-statusline-sshd
 services:
-  claude-code-statusline:
+  claude-code-statusline-sshd:
     command: ["/sbin/init"]
     ports:
       - "33333:22"
@@ -14,7 +14,7 @@ services:
       - /tmp
       - /run/lock
     restart: always
-    container_name: claude-code-statusline
+    container_name: claude-code-statusline-sshd
     working_dir: /root/projects
 
     volumes:
@@ -43,8 +43,8 @@ services:
       - DEBIAN_FRONTEND=noninteractive
       - EDITOR=nano
       - TZ=Asia/Shanghai
-      - ANTHROPIC_API_KEY=${API_KEY_AND_AUTH_TOKEN}
-      - ANTHROPIC_AUTH_TOKEN=${API_KEY_AND_AUTH_TOKEN}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - ANTHROPIC_AUTH_TOKEN=${ANTHROPIC_AUTH_TOKEN}
 networks:
   1panel-network:
     external: true

@@ -16,12 +16,12 @@ statusline script for enhanced visual feedback.
 
 - `./build.sh` - Build the Docker image (`claude-code-statusline-sshd:latest`)
 - `./start.sh` - Start Claude Code in the Docker container
-- `docker compose run --rm claude-code-statusline` - Alternative start method
+- ` docker compose  up -d` - Alternative start method
 
 ### Docker Commands
 
 - `docker build -t claude-code-statusline-sshd .` - Manual build
-- `docker compose -f docker-compose.yml run --rm claude-code-statusline` - Run
+- `docker compose -f docker-compose.yml run --rm claude-code-statusline-sshd` - Run
   with compose
 
 ## Architecture
