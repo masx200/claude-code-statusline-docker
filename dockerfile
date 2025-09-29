@@ -1,68 +1,64 @@
-from  library/ubuntu:noble 
+
+
+from docker.cnb.cool/masx200/docker_mirror/systemd-sshd:latest
+
+copy ./etc/ssh/sshd_config /etc/ssh/sshd_config
+copy ./usr/lib/systemd/system/ssh.service /usr/lib/systemd/system/ssh.service
+
+
+
+
 
 
 run cat > /etc/apt/sources.list <<EOF
 
+
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb http://mirrors.bfsu.edu.cn/ubuntu/ noble main restricted universe multiverse
-deb-src http://mirrors.bfsu.edu.cn/ubuntu/ noble main restricted universe multiverse
-deb http://mirrors.bfsu.edu.cn/ubuntu/ noble-updates main restricted universe multiverse
-deb-src http://mirrors.bfsu.edu.cn/ubuntu/ noble-updates main restricted universe multiverse
-deb http://mirrors.bfsu.edu.cn/ubuntu/ noble-backports main restricted universe multiverse
-deb-src http://mirrors.bfsu.edu.cn/ubuntu/ noble-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie main contrib non-free non-free-firmware
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie main contrib non-free non-free-firmware
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie-updates main contrib non-free non-free-firmware
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie-updates main contrib non-free non-free-firmware
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie-backports main contrib non-free non-free-firmware
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie-backports main contrib non-free non-free-firmware
 
 # 以下安全更新软件源包含了官方源与镜像站配置，如有需要可自行修改注释切换
-deb http://mirrors.bfsu.edu.cn/ubuntu/ noble-security main restricted universe multiverse
-deb-src http://mirrors.bfsu.edu.cn/ubuntu/ noble-security main restricted universe multiverse
-
-# 预发布软件源，不建议启用
-deb http://mirrors.bfsu.edu.cn/ubuntu/ noble-proposed main restricted universe multiverse
-deb-src http://mirrors.bfsu.edu.cn/ubuntu/ noble-proposed main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/debian-security trixie-security main contrib non-free non-free-firmware
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security trixie-security main contrib non-free non-free-firmware
 
 EOF
 
 
-run cat > /etc/apt/sources.list.d/ubuntu.sources <<EOF
+run cat > /etc/apt/sources.list.d/debian.sources <<EOF
+
+
 
 Types: deb
-URIs: http://mirrors.bfsu.edu.cn/ubuntu
-Suites: noble noble-updates noble-backports
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+URIs: https://mirrors.tuna.tsinghua.edu.cn/debian
+Suites: trixie trixie-updates trixie-backports
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 Types: deb-src
-URIs: http://mirrors.bfsu.edu.cn/ubuntu
-Suites: noble noble-updates noble-backports
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+URIs: https://mirrors.tuna.tsinghua.edu.cn/debian
+Suites: trixie trixie-updates trixie-backports
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
 # 以下安全更新软件源包含了官方源与镜像站配置，如有需要可自行修改注释切换
 Types: deb
-URIs: http://mirrors.bfsu.edu.cn/ubuntu
-Suites: noble-security
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+URIs: https://mirrors.tuna.tsinghua.edu.cn/debian-security
+Suites: trixie-security
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
 Types: deb-src
-URIs: http://mirrors.bfsu.edu.cn/ubuntu
-Suites: noble-security
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
-
-# 预发布软件源，不建议启用
-
-Types: deb
-URIs: http://mirrors.bfsu.edu.cn/ubuntu
-Suites: noble-proposed
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
-
-Types: deb-src
-URIs: http://mirrors.bfsu.edu.cn/ubuntu
-Suites: noble-proposed
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+URIs: https://mirrors.tuna.tsinghua.edu.cn/debian-security
+Suites: trixie-security
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
 EOF
 
@@ -86,7 +82,7 @@ run npm config set registry https://registry.npmmirror.com
 run npm install -g cnpm --registry=https://registry.npmmirror.com
 
 
-run cnpm install -g @anthropic-ai/claude-code corepack pnpm @chongdashu/cc-statusline
+run cnpm install -g @anthropic-ai/claude-code corepack pnpm @chongdashu/cc-statusline yarn
 RUN cat >  /root/.claude/settings.json <<EOF
 {
   "statusLine": {
@@ -96,11 +92,12 @@ RUN cat >  /root/.claude/settings.json <<EOF
   }
 }
 EOF
-ENTRYPOINT [ "npx" ,"-y", "@anthropic-ai/claude-code" ]
+
 
 
 env ANTHROPIC_BASE_URL="https://open.bigmodel.cn/api/anthropic"
-# env ANTHROPIC_API_KEY="${API_KEY_AND_AUTH_TOKEN}"
-# env ANTHROPIC_AUTH_TOKEN="${API_KEY_AND_AUTH_TOKEN}"
+
 
 env ANTHROPIC_MODEL="glm-4.5"
+
+cmd [ "/sbin/init" ]

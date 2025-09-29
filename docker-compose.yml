@@ -1,24 +1,54 @@
 version: "3.8"
-
+name: claude-code-statusline
 services:
   claude-code-statusline:
+    command: ["/sbin/init"]
+    ports:
+      - "33333:22"
+    privileged: true
+    networks:
+      - 1panel-network
+    cgroup: host
+    tmpfs:
+      - /run
+      - /tmp
+      - /run/lock
+    restart: always
+    container_name: claude-code-statusline
     working_dir: /root/projects
-    entrypoint: ["npx", "-y", "@anthropic-ai/claude-code"]
 
     volumes:
+      - /etc/shadow:/etc/shadow
+      - ./root/.ssh/:/root/.ssh/
+      - /etc/localtime:/etc/localtime
+      - /sys/fs/cgroup:/sys/fs/cgroup
       - ./projects:/root/projects
       - ./.claude/plugins:/root/.claude/plugins
       - ./.claude/projects:/root/.claude/projects
       - ./.claude/shell-snapshots:/root/.claude/shell-snapshots
       - ./.claude/statsig:/root/.claude/statsig
       - ./.claude/todos:/root/.claude/todos
-      - ./.claude/settings.json:/root/.claude/settings.json
-      - ./.claude/statusline.sh:/root/.claude/statusline.sh
+      - ./settings.json:/root/.claude/settings.json
+      - ./statusline.sh:/root/.claude/statusline.sh
 
     image: claude-code-statusline-docker:latest
-    network_mode: host
+
     stdin_open: true
     tty: true
     environment:
+      - LANG=zh_CN.UTF-8
+      - DEBIAN_FRONTEND=noninteractive
+      - EDITOR=nano
+      - TZ=Asia/Shanghai
       - ANTHROPIC_API_KEY=${API_KEY_AND_AUTH_TOKEN}
       - ANTHROPIC_AUTH_TOKEN=${API_KEY_AND_AUTH_TOKEN}
+networks:
+  1panel-network:
+    external: true
+    name: "1panel-network"
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: "172.19.20.0/24"
+        - subnet: "fc01:db8:21::/64"
