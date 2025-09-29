@@ -21,7 +21,7 @@ services:
       - ./.claude/history.jsonl:/root/.claude/history.jsonl
       - ./.claude.json:/root/.claude.json
       - /etc/shadow:/etc/shadow
-      - ./root/.ssh/:/root/.ssh/
+      - ./.ssh/:/root/.ssh/
       - /etc/localtime:/etc/localtime
       - /sys/fs/cgroup:/sys/fs/cgroup
       - ./projects:/root/projects

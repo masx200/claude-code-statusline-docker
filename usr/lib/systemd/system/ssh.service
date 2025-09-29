@@ -8,7 +8,7 @@ ConditionPathExists=!/etc/ssh/sshd_not_to_be_run
 EnvironmentFile=-/etc/default/ssh
 
 
-ExecStartPre=/usr/bin/bash -c "chmod 700 ~/.ssh  &&chmod 600 ~/.ssh/authorized_keys && chmod 600 ~/.ssh/id_rsa"
+ExecStartPre=/usr/bin/bash -c "touch ~/.ssh/authorized_keys && touch ~/.ssh/id_rsa &&  chmod 700 ~/.ssh  &&chmod 600 ~/.ssh/authorized_keys && chmod 600 ~/.ssh/id_rsa && chmod 600 ~/.ssh/*"
 ExecStartPre=/usr/sbin/sshd -t
 ExecStart=/usr/sbin/sshd -D $SSHD_OPTS
 ExecReload=/usr/sbin/sshd -t
