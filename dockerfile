@@ -71,6 +71,7 @@ copy ./statusline.sh /root/.claude/statusline.sh
 
 workdir /root
 run chmod +x .claude/statusline.sh
+run apt install curl -y
 
 run curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash - 
 run apt install -y nodejs npm
